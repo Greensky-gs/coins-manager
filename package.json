@@ -1,0 +1,21 @@
+{
+  "name": "coins-manager",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Greensky-gs/coins-manager",
+  "author": "Greensky <david.hesliere@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/mysql": "^2.15.21",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "tsc": "^2.0.4",
+    "typescript": "^4.8.4"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "lint": "prettier -w src"
+  }
+}
