@@ -1,6 +1,6 @@
 {
   "name": "coins-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/Greensky-gs/coins-manager",
@@ -33,5 +33,10 @@
   "bugs": {
     "url": "https://github.com/Greensky-gs/coins-manager/issues"
   },
-  "module": "dist/index.mjs"
+  "module": "dist/index.mjs",
+  "keywords": [
+    "manager",
+    "coins",
+    "economy"
+  ]
 }
