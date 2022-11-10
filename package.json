@@ -2,6 +2,7 @@
   "name": "coins-manager",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/Greensky-gs/coins-manager",
   "author": "Greensky <david.hesliere@gmail.com>",
   "license": "MIT",
@@ -17,5 +18,20 @@
   "scripts": {
     "build": "tsc -b",
     "lint": "prettier -w src"
-  }
+  },
+  "files": [
+    "./dist"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./src/*": "./dist/*",
+    "./dist/*": "./dist/*"
+  },
+  "bugs": {
+    "url": "https://github.com/Greensky-gs/coins-manager/issues"
+  },
+  "module": "dist/index.mjs"
 }

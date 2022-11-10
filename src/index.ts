@@ -1,2 +1,2 @@
-export { CoinsManager } from "./structures/coinsManager";
+export { CoinsManager } from './structures/coinsManager';
 export { account } from './typings/types';
