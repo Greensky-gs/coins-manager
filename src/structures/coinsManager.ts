@@ -27,8 +27,8 @@ export class CoinsManager<T extends TypeT> {
         const dt = this.getData(inp);
         dt.coins += inp.coins;
 
-        this.cache.set(this.getCode(inp), dt);
         this.query(this.buildQueryForUser(dt));
+        this.cache.set(this.getCode(inp), dt);
         return dt;
     }
     public removeCoins(inp: CoinsInput<T, false, true>): account<T> | 'not enough coins' {
@@ -36,16 +36,16 @@ export class CoinsManager<T extends TypeT> {
         if (dt.coins < inp.coins) return 'not enough coins';
 
         dt.coins -= inp.coins;
-        this.cache.set(this.getCode(inp), dt);
         this.query(this.buildQueryForUser(dt));
+        this.cache.set(this.getCode(inp), dt);
         return dt;
     }
     public addBank(inp: CoinsInput<T, true, false>): account<T> {
         const dt = this.getData(inp);
         dt.bank += inp.bank;
 
-        this.cache.set(this.getCode(inp), dt);
         this.query(this.buildQueryForUser(dt));
+        this.cache.set(this.getCode(inp), dt);
         return dt;
     }
     public removeBank(inp: CoinsInput<T, true, false>): account<T> | 'not enough coins' {
@@ -53,8 +53,8 @@ export class CoinsManager<T extends TypeT> {
         if (dt.coins < inp.bank) return 'not enough coins';
 
         dt.coins -= inp.bank;
-        this.cache.set(this.getCode(inp), dt);
         this.query(this.buildQueryForUser(dt));
+        this.cache.set(this.getCode(inp), dt);
         return dt;
     }
     public getCode(inp: CoinsInput<T, false, false>): string {
@@ -97,7 +97,7 @@ export class CoinsManager<T extends TypeT> {
     private buildGlobalQuery(inp: account<'global'>, data: account<'global'>): string {
         if (this.hasAccount(inp as account<T>))
             return `UPDATE coins SET coins="${data.coins}", bank="${data.bank}" WHERE user_id='${data.user_id}'`;
-        return `INSERT INTO coins (guild_id, user_id, coins, bank) VALUES ('${data.user_id}', '${data.coins}', '${data.bank}')`;
+        return `INSERT INTO coins (user_id, coins, bank) VALUES ('${data.user_id}', '${data.coins}', '${data.bank}')`;
     }
     private buildMutliQuery(inp: account<'multiguild'>, data: account<'multiguild'>): string {
         if (this.hasAccount(inp))
