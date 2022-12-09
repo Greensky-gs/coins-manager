@@ -90,9 +90,8 @@ export class CoinsManager<T extends TypeT> {
     }
 
     private buildQueryForUser(inp: account<T>): string {
-        const data = this.getData(inp);
-        if (this.global) return this.buildGlobalQuery(inp, data);
-        return this.buildMutliQuery(inp as account<'multiguild'>, data as account<'multiguild'>);
+        if (this.global) return this.buildGlobalQuery(inp, inp);
+        return this.buildMutliQuery(inp as account<'multiguild'>, inp as account<'multiguild'>);
     }
     private buildGlobalQuery(inp: account<'global'>, data: account<'global'>): string {
         if (this.hasAccount(inp as account<T>))
