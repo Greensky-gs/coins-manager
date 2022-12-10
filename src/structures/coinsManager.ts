@@ -50,9 +50,9 @@ export class CoinsManager<T extends TypeT> {
     }
     public removeBank(inp: CoinsInput<T, true, false>): account<T> | 'not enough coins' {
         const dt = this.getData(inp);
-        if (dt.coins < inp.bank) return 'not enough coins';
+        if (dt.bank < inp.bank) return 'not enough coins';
 
-        dt.coins -= inp.bank;
+        dt.bank -= inp.bank;
         this.query(this.buildQueryForUser(dt));
         this.cache.set(this.getCode(inp), dt);
         return dt;
