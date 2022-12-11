@@ -15,13 +15,13 @@ export class CoinsManager<T extends TypeT> {
         this.db = database;
         this.type = options?.type ?? 'multiguild';
     }
-    public start() {
-        this.fillCache();
-        this.query(
+    public async start() {
+        await this.query(
             `CREATE TABLE IF NOT EXISTS coins ( ${
                 this.type === 'multiguild' ? 'guild_id VARCHAR(255) NOT NULL, ' : ''
             }user_id VARCHAR(255) NOT NULL, coins INTEGER(255) NOT NULL DEFAULT '0', bank INTEGER(255) NOT NULL DEFAULT '0' );`
-        );
+            );
+        this.fillCache();
     }
     public addCoins(inp: CoinsInput<T, false, true>): account<T> {
         const dt = this.getData(inp);
