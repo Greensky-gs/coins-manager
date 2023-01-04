@@ -77,7 +77,7 @@ export class CoinsManager<T extends TypeT> {
         let lb = this.array;
 
         if (!this.global && inp) lb = (lb as account<'multiguild'>[]).filter((x) => x.guild_id === inp);
-        return lb.sort((a, b) => a.coins + b.bank - (b.coins - b.bank));
+        return lb.sort((a, b) => (b.coins + b.bank) - (a.coins - a.bank));
     }
 
     public get array() {
